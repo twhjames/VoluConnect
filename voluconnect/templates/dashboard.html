@@ -1,0 +1,15 @@
+<html>
+<head>
+    {% extends "base.html" %}
+    <title>{% block title %} VoluConnect Admin Dashboard {% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/custom-style.css">
+</head>
+
+<body>
+    <div class="container">
+        {% block nav_dashboard %}
+        class="activeNav"
+        {% endblock %}
+    </div>
+</body>
+</html>

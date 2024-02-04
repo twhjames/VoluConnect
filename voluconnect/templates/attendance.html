@@ -1,0 +1,21 @@
+<html>
+<head>
+    {% extends "base.html" %}
+    <title>{% block title %} VoluConnect Attendance Taking System {% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/custom-style.css">
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- For active nav styling -->
+        {% block nav_attendance %}
+        class="activeNav"
+        {% endblock %}
+
+        <!-- Main content for the page -->
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

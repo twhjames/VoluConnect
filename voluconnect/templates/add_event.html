@@ -1,0 +1,38 @@
+<html>
+<head>
+    {% extends "base.html" %}
+    <title>{% block title %} VoluConnect Add Events {% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/custom-style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- For active nav styling -->
+        {% block nav_events %}
+        class="activeNav"
+        {% endblock %}
+
+        <!-- Main content for the page -->
+        {% block content %}
+
+        <div class="eventForm">
+            <h1>Add Event</h1>
+            <hr/>
+            
+            {% if submitted %}
+                Your event was submitted successfully!
+            {% else %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+
+                <input type="submit" value="Submit" class="btn btn-secondary">
+            </form>
+        </div>
+        {% endif %}
+        
+        {% endblock %}
+    </div>
+</body>
+</html>

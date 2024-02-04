@@ -1,0 +1,182 @@
+<html>
+<head>
+    {% extends "base.html" %}
+    <title>{% block title %} VoluConnect Events Managment System {% endblock %}</title>
+    <link rel="stylesheet" href="../static/css/custom-style.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-r4NyP46Rj3UeZpo6DttfKwa9H5ICirqyrD6LrA6GSigJn5EpoxFm5FVUcFAxjz0r" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.0/dist/umd/popper.min.js" integrity="sha384-Z6rYrwRtJOEwX8FnM5trz0sfKsvBIdoK9iKq8Z5FJ6l9hC00K5JfVOD9F8vFzs0j" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLvlC/tQfFJtUj2RsmK2Kz4t+FW3mJjApgzFhFKY6gjB07s6M/6cUJ6Bp" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        
+        <!-- For active nav styling -->
+        {% block nav_events %}
+        class="activeNav"
+        {% endblock %}
+
+        <!-- Main content for the page -->
+        {% block content %}
+            <h1>Events</h1>
+            <div class="events-toolkit">
+                <form class="events-filter" action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+                
+                <div class="events-btn">
+                    <a href="/export_events">
+                        <button id="export-button">Export</button>
+                    </a>
+                    <a href="/add_event">
+                        <button id="add-event-button">Add Event</button>
+                    </a>
+                </div>
+            </div>
+            <hr/>
+            <table id="eventsTable" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name</th>
+                        <th>Organisation</th>
+                        <th>Location</th>
+                        <th>Date & Time</th>
+                        <th>Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for event in page_obj %}
+                    <tr>
+                        <td>{{ event.id }}</td>
+                        <td>{{ event.event_name }}</td>
+                        <td>{{ event.organisation }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>{{ event.event_date }}</td>
+                        <td>
+                            
+                            <!-- Trigger button for modal pop-up edit icon -->
+                            <button class="editIcon" type="submit" value="Edit" onclick="openModal(`{{ event.id }}`)" style="border: none; background: none; cursor: pointer;">
+                                <i class="fa fa-pen-to-square"></i>
+                            </button>
+
+                            <!-- Modal HTML -->
+                            <div class="modal" id="eventModal">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Event</h5>
+                                            <button type="button" class="close" onclick="closeModal()">&times;</button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="eventForm">
+                                                <!-- Form fields for event details -->
+                                                <input type="text" id="eventName" name="name" required>
+                                                <input type="text" id="eventOrganisation" name="organisation" required>
+                                                <input type="text" id="eventLocation" name="location" required>
+                                                <input type="datetime-local" id="eventTime" name="datetime" required>
+                                                <input type="hidden" id="eventId" name="event_id">
+                                                {% csrf_token %}
+                                                <button type="submit">Save Changes</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            </a>
+                            <a href="" class="editIcon">
+                                <i class="fa fa-download"></i>
+                            </a>
+                            
+                            <form action="{% url 'delete_event' event.pk %}" method="post" class="editIcon">
+                                {% csrf_token %}
+                                <button type="submit" value="Delete" onclick="return confirm('Are you sure?');" style="border: none; background: none; cursor: pointer;">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div id="pagination">
+                <p id="counter">Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">
+                            <i class="fa fa-angles-left"></i>
+                        </a>
+                    {% else %}
+                        <i class="fa fa-angles-left"></i>
+                    {% endif %}
+                    
+                    <span class="current">
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <a href="?page={{ num }}" class="btn active">{{ num }}</a>
+                            {% else %}
+                                <a href="?page={{ num }}" class="btn">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+                    </span>
+                    
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">
+                            <i class="fa fa-angles-right"></i>
+                        </a>
+                    {% else %}
+                        <i class="fa fa-angles-right"></i>
+                    {% endif %}
+                </span>
+            </div>
+            <script>
+                function openModal(eventId) {
+                    // Fetch event data using AJAX
+                    fetch(`/get_event/${eventId}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            document.getElementById('eventName').value = data.name;
+                            document.getElementById('eventOrganisation').value = data.organisation;
+                            document.getElementById('eventLocation').value = data.location;
+                            document.getElementById('eventTime').value = data.datetime;
+                            document.getElementById('eventId').value = data.id;
+                            document.getElementById('eventModal').style.display = 'block';
+                        });
+                }
+        
+                function closeModal() {
+                    document.getElementById('eventModal').style.display = 'none';
+                }
+        
+                document.getElementById('eventForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // AJAX call to send data to the server
+                    let formData = new FormData(this);
+                    fetch(`/edit_event/`, {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken' : `{{csrf_token}}`,
+                        },
+                        body: formData
+                    }).then(response => {
+                        // Handle response
+                        closeModal();
+                        window.location.reload();
+                        // Optionally, update the page or notify the user
+                    });
+                });
+        
+            </script>
+        {% endblock %}  
+
+    </div>
+    
+
+</body>
+</html>
