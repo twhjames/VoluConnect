@@ -146,7 +146,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'cards' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'gardening' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                                 
                             </div>
@@ -201,7 +201,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'children' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                                 
                             </div>
@@ -229,7 +229,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'labour' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                                 
                             </div>
@@ -257,7 +257,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'painting' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                                 
                             </div>
@@ -285,7 +285,7 @@
                                             <p><span>(4.5)</span> based on 120</p>
                                         </div>
                                     </div>
-                                    <a href="#" class="border-btn border-btn2">Find out more</a>
+                                    <a href="{% url 'rations' %}" class="border-btn border-btn2">Find out more</a>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                             <div class="single-footer-caption mb-30">
                                 <!-- logo -->
                                 <div class="footer-logo mb-25">
-                                    <a href="index.html"><img src="{% static '/img/logo/logo2_footer.png' %}" alt=""></a>
+                                    <a href="{% url 'index' %}"><img src="{% static '/img/logo/logo2_footer.png' %}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -369,36 +369,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Team</h4>
-                                <ul>
-                                    <li><a href="{% url 'about' %}">Design & creatives</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
                         <div class="single-footer-caption mb-50">
                             <div class="footer-tittle">
-                                <h4>Media & Press</h4>
+                                <h4></h4>
                                 <ul>
+                                    <li><a href="{% url 'about' %}">Team</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
                                     <li><a href="#">Design & creatives</a></li>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="footer-tittle">
-                                <h4>Contact Us</h4>
-                                <ul>
-                                    <li><a href="{% url 'contact' %}">Design & creatives</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>

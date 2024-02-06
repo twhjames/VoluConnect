@@ -46,7 +46,7 @@
                         <!-- Logo -->
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo">
-                                <a href="index.html"><img src="{% static 'img/logo/logo.png' %}" alt=""></a>
+                                <a href="{% url 'index' %}"><img src="{% static 'img/logo/logo.png' %}" alt=""></a>
                             </div>
                         </div>
                         <div class="col-xl-10 col-lg-10">
@@ -55,20 +55,20 @@
                                 <div class="main-menu d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">                                                                                          
-                                            <li class="active" ><a href="index.html">Home</a></li>
-                                            <li><a href="courses.html">Projects</a></li>
-                                            <li><a href="about.html">About</a></li>
+                                            <li class="active" ><a href="{% url 'index' %}">Home</a></li>
+                                            <li><a href="{% url 'courses' %}">Projects</a></li>
+                                            <li><a href="{% url 'about' %}">About</a></li>
                                             <li><a href="#">Blog</a>
                                                 <ul class="submenu">
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog_details.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="{% url 'blog' %}">Blog</a></li>
+                                                    <li><a href="{% url 'blog_details' %}">Blog Details</a></li>
+                                                    <li><a href="{% url 'elements' %}">Element</a></li>
                                                 </ul>
                                             </li>
-                                            <li><a href="contact.html">Contact</a></li>
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
                                             <!-- Button -->
-                                            <li class="button-header margin-left "><a href="#" class="btn">Join</a></li>
-                                            <li class="button-header"><a href="login.html" class="btn btn3">Log in</a></li>
+                                            <li class="button-header margin-left "><a href="{% url 'register' %}" class="btn">Join</a></li>
+                                            <li class="button-header"><a href="{% url 'login' %}" class="btn btn3">Log in</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -94,11 +94,11 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">Company insights</h1>
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Testimonials</h1>
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
                                             <li class="breadcrumb-item"><a href="#">Blog</a></li> 
                                         </ol>
                                     </nav>
@@ -128,10 +128,9 @@
                                     <a class="d-inline-block" href="blog_details.html">
                                         <h2 class="blog-head" style="color: #2d2d2d;">Google inks pact for new 35-storey office</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>First All of all with big heart I want to say you THANK YOU for giving an opportunity to volunteer and participate in sports event by which we were able to make some one happy and full of life. It was so nice to see so many happy faces together. Togetherness makes an impact on everyone. I would really be a part of any kind of activity whenever I can in this busy schedule.</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>Harshal Patil</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
@@ -148,10 +147,9 @@
                                     <a class="d-inline-block" href="blog_details.html">
                                         <h2 class="blog-head" style="color: #2d2d2d;">Google inks pact for new 35-storey office</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>My heartfelt thanx to BAH for giving me an opportunity to be part of such n amazing event of children's day celebrations, organised in collaboration with Paksi society. It was a very unique, fun n exciting experience for me, managing the game booth with a young teenage volunteer. The kids were having a wonderful time playing various games, making parents laugh too, and seeing their kids faces glow up upon receiving small gifts of sweets after each game made my heart burst with joy. Indeed, very satisfying and a unique experience. I thank God also who blessed me to be a part in doing something good for the community.</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>HUMEIRA SAMIR</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
@@ -168,10 +166,13 @@
                                     <a class="d-inline-block" href="blog_details.html">
                                         <h2 class="blog-head" style="color: #2d2d2d;">Google inks pact for new 35-storey office</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>It was really a blissful moment to spend my time in the “Children day celebration “ held at upper Changi road on 9th Oct 2022…
+                                    Everybody will have a unique talent that is not only meant for earning but also to share with all always if we share more we will have enough space to load more knowledge…..
+                                    I’m really fortunate to be a part of that children day function and did a touch of those works as a volunteer which gives immense pleasure and fulfilment being a human .
+                                    Each and every highly spirited volunteers of “Big at heart “ along with so many sponsors made the occasion extremely gracefully without any disorder!
+                                    Thank you all … I highly solicit everybody who is reading this article to spare your valuable supplement time to devote towards doing good to others🙏🏽</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>Veena Dhilip</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
@@ -188,10 +189,11 @@
                                     <a class="d-inline-block" href="blog_details.html">
                                         <h2 class="blog-head" style="color: #2d2d2d;">Google inks pact for new 35-storey office</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>I am thankful for being part of this ground-up initiative.
+                                    Through this mural wall painting, I was able to learn a new form of painting technique. I am glad that I chose to attend this voluntary work as I had a lot of fun and learnt many new things. I was also glad that I got to share this experience with my best friend, who has also attended many community painting projects and she was the one who had introduced this meaningful event to me.
+                                    Thank you once again for organising such a project and allowing me to be part of it.</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>Kathyayani Som</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
@@ -208,10 +210,11 @@
                                     <a class="d-inline-block" href="blog_details.html">
                                         <h2 class="blog-head" style="color: #2d2d2d;">Google inks pact for new 35-storey office</h2>
                                     </a>
-                                    <p>That dominion stars lights dominion divide years for fourth have don't stars is that
-                                    he earth it first without heaven in place seed it second morning saying.</p>
+                                    <p>Volunteering for the Community Fridge Mural wall painting at Block 117 Tampines Street 11, a ground up initiative by Tampines Changkat Community Club, was an enriching experience and this has helped me develop a sense of appreciation for the community.
+                                    I had the opportunity to paint murals on the walls. This project needed volunteers because the area to be painted was rather large.
+                                    My friends and I participated in this project. Overall, I think it's been a huge success, and we've done a pretty good job in painting the mural walls. I hope that the community fridge will help out a lot of people in the future. I want to thank Tampines Changkat Community Club and Big Heart for the opportunity to contribute to our community.</p>
                                     <ul class="blog-info-link">
-                                        <li><a href="#"><i class="fa fa-user"></i> Travel, Lifestyle</a></li>
+                                        <li><a href="#"><i class="fa fa-user"></i>Kavy Upadhyay (One World International School)</a></li>
                                         <li><a href="#"><i class="fa fa-comments"></i> 03 Comments</a></li>
                                     </ul>
                                 </div>
@@ -336,71 +339,6 @@
                                     </div>
                                 </div>
                             </aside>
-                            <aside class="single_sidebar_widget tag_cloud_widget">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Tag Clouds</h4>
-                                <ul class="list">
-                                    <li>
-                                        <a href="#">project</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">love</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">technology</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">travel</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">restaurant</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">life style</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">illustration</a>
-                                    </li>
-                                </ul>
-                            </aside>
-
-                            <aside class="single_sidebar_widget instagram_feeds">
-                                <h4 class="widget_title" style="color: #2d2d2d;">Instagram Feeds</h4>
-                                <ul class="instagram_row flex-wrap">
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_5.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_6.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_7.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_8.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_9.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img class="img-fluid" src="{% static 'img/post/post_10.png' %}" alt="">
-                                        </a>
-                                    </li>
-                                </ul>
-                            </aside>
                             <aside class="single_sidebar_widget newsletter_widget">
                                 <h4 class="widget_title" style="color: #2d2d2d;">Newsletter</h4>
                                 <form action="#">
@@ -410,6 +348,22 @@
                                     </div>
                                     <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
                                     type="submit">Subscribe</button>
+                                </form>
+                            </aside>
+                            <aside>
+                                <h4 class="widget_title" style="color: #2d2d2d;">Share Your Giving Experience</h4>
+                                <form action="#">
+                                    <div class="mt-10">
+                                        <textarea class="single-textarea" placeholder="Your testimonial" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Message'" required></textarea>
+                                    </div>
+                                    <div class="mt-10">
+                                        <input type="text" name="first_name" placeholder="Add your name"
+                                        onfocus="this.placeholder = ''" onblur="this.placeholder = 'Primary color'" required
+                                        class="single-input-primary">
+                                        <button class="button rounded-0 primary-bg text-white w-100 btn_1 boxed-btn"
+                                        type="submit">Submit</button>
+                                    </div>
                                 </form>
                             </aside>
                         </div>
@@ -423,74 +377,46 @@
         <div class="footer-wrappper footer-bg">
            <!-- Footer Start-->
            <div class="footer-area footer-padding">
-               <div class="container">
-                   <div class="row justify-content-between">
-                       <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
-                           <div class="single-footer-caption mb-50">
-                               <div class="single-footer-caption mb-30">
-                                   <!-- logo -->
-                                   <div class="footer-logo mb-25">
-                                       <a href="index.html"><img src="{% static 'img/logo/logo2_footer.png' %}" alt=""></a>
-                                   </div>
-                                   <div class="footer-tittle">
-                                       <div class="footer-pera">
-                                           <p>The automated process starts as soon as your clothes go into the machine.</p>
-                                       </div>
-                                   </div>
-                                   <!-- social -->
-                                   <div class="footer-social">
-                                       <a href="#"><i class="fab fa-twitter"></i></a>
-                                       <a href="https://bit.ly/sai4ull"><i class="fab fa-facebook-f"></i></a>
-                                       <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-5">
-                           <div class="single-footer-caption mb-50">
-                               <div class="footer-tittle">
-                                   <h4>Our solutions</h4>
-                                   <ul>
-                                       <li><a href="#">Design & creatives</a></li>
-                                       <li><a href="#">Telecommunication</a></li>
-                                       <li><a href="#">Restaurant</a></li>
-                                       <li><a href="#">Programing</a></li>
-                                       <li><a href="#">Architecture</a></li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
-                           <div class="single-footer-caption mb-50">
-                               <div class="footer-tittle">
-                                   <h4>Support</h4>
-                                   <ul>
-                                       <li><a href="#">Design & creatives</a></li>
-                                       <li><a href="#">Telecommunication</a></li>
-                                       <li><a href="#">Restaurant</a></li>
-                                       <li><a href="#">Programing</a></li>
-                                       <li><a href="#">Architecture</a></li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                       <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6">
-                           <div class="single-footer-caption mb-50">
-                               <div class="footer-tittle">
-                                   <h4>Company</h4>
-                                   <ul>
-                                       <li><a href="#">Design & creatives</a></li>
-                                       <li><a href="#">Telecommunication</a></li>
-                                       <li><a href="#">Restaurant</a></li>
-                                       <li><a href="#">Programing</a></li>
-                                       <li><a href="#">Architecture</a></li>
-                                   </ul>
-                               </div>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="single-footer-caption mb-30">
+                                <!-- logo -->
+                                <div class="footer-logo mb-25">
+                                    <a href="{% url 'index' %}"><img src="{% static '/img/logo/logo2_footer.png' %}" alt=""></a>
+                                </div>
+                                <div class="footer-tittle">
+                                    <div class="footer-pera">
+                                        <p>A member of ground up central</p>
+                                    </div>
+                                </div>
+                                <!-- social -->
+                                <div class="footer-social">
+                                    <a href="https://www.youtube.com/channel/UCgjJLFg85upAjk49uhrSTuQ"><i class="fab fa-youtube"></i></a>
+                                    <a href="https://www.facebook.com/TheBigAtHeart"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/thebigatheart/"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-xl-2 col-lg-4 col-md-4 col-sm-6">
+                        <div class="single-footer-caption mb-50">
+                            <div class="footer-tittle">
+                                <h4></h4>
+                                <ul>
+                                    <li><a href="{% url 'about' %}">Team</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                                    <li><a href="#">Design & creatives</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
            <!-- footer-bottom area -->
            <div class="footer-bottom-area">
                <div class="container">

@@ -97,12 +97,12 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">About us</h1>
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">Children's Day Fiesta</h1>
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
                                             <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-                                            <li class="breadcrumb-item"><a href="#">about</a></li> 
+                                            <li class="breadcrumb-item"><a href="{% url 'courses' %}">Projects</a></li>
                                         </ol>
                                     </nav>
                                     <!-- breadcrumb End -->
@@ -113,62 +113,88 @@
                 </div>
             </div>
         </section>
-        <!--? Team -->
-        <section class="team-area section-padding40 fix">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h2>Meet The Team</h2>
+        <!--? Start Align Area -->
+        <div class="whole-wrap">
+            <div class="container box_1170">
+                <div class="section-top-border">
+                    <h3 class="mb-30"></h3>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="{% static 'img/gallery/featured3.jpg' %}" alt="" class="img-fluid">
                         </div>
-                    </div>
-                </div>
-                <div class="team-active">
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{% static 'img/gallery/team1.png' %}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Nalini Thite</a></h5>
-                            <p>Co-Founder & Director</p>
-                        </div>
-                    </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{% static 'img/gallery/team2.png' %}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Asmita Tadwalkar</a></h5>
-                            <p>Co-Founder & Director</p>
-                        </div>
-                    </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{% static 'img/gallery/team3.png' %}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Smita Ambike</a></h5>
-                            <p>Director & Finance</p>
-                        </div>
-                    </div>
-                    <div class="single-cat text-center">
-                        <div class="cat-icon">
-                            <img src="{% static 'img/gallery/team4.png' %}" alt="">
-                        </div>
-                        <div class="cat-cap">
-                            <h5><a href="services.html">Jyoti Joshi</a></h5>
-                            <p>Donations</p>
+                        <div class="col-md-9 mt-sm-20">
+                            <p><b>Description:</b></p>
+                            <p>Come be a part of our Children's Day Fiesta! It's a day filled with joy and excitement for kids in our community. From games and crafts to music and performances, there's something for everyone.
+
+                                We're seeking enthusiastic volunteers to help us make this event unforgettable. Whether you're organizing activities, assisting with setup, or simply spreading smiles, your contribution will make a difference.
+                                
+                                Join us in creating magical moments and spreading happiness to children. Sign up now and be part of something special!</p>
+                            <p>
+                                <b>job scope:</b>
+                                food & refreshments helper and clean-up crew
+                            </p>
+                            <p>
+                                <b>Hours:</b>
+                                6
+                            </p>
+                            <section class="button-area">
+                                <div class="container box_1170 border-top-generic">
+                                    <div class="button-group-area mt-10">
+                                        <a href="#" class="genric-btn primary-border">Register Here</a>
+                                    </div>
+                                </div>
+                            </section>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- Services End -->
+        </div>
+        <!--? End Align Area -->
+        <!-- ? services-area -->
+        <div class="services-area services-area2 section-padding40">
+            <div class="container">
+                <div class="row justify-content-sm-center">
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'img/icon/icon1.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>60+ UX courses</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'img/icon/icon2.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Expert instructors</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-8">
+                        <div class="single-services mb-30">
+                            <div class="features-icon">
+                                <img src="{% static 'img/icon/icon3.svg' %}" alt="">
+                            </div>
+                            <div class="features-caption">
+                                <h3>Life time access</h3>
+                                <p>The automated process all your website tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
-     <div class="footer-wrappper footer-bg">
-        <!-- Footer Start-->
-        <div class="footer-area footer-padding">
+        <div class="footer-wrappper footer-bg">
+           <!-- Footer Start-->
+           <div class="footer-area footer-padding">
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-4 col-lg-5 col-md-4 col-sm-6">
@@ -209,71 +235,71 @@
                 </div>
             </div>
         </div>
-        <!-- footer-bottom area -->
-        <div class="footer-bottom-area">
-            <div class="container">
-                <div class="footer-border">
-                    <div class="row d-flex align-items-center">
-                        <div class="col-xl-12 ">
-                            <div class="footer-copy-right text-center">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+           <!-- footer-bottom area -->
+           <div class="footer-bottom-area">
+               <div class="container">
+                   <div class="footer-border">
+                       <div class="row d-flex align-items-center">
+                           <div class="col-xl-12 ">
+                               <div class="footer-copy-right text-center">
+                                   <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                      Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                                      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                  </div>
                               </div>
                           </div>
                       </div>
                   </div>
               </div>
+              <!-- Footer End-->
           </div>
-          <!-- Footer End-->
-      </div>
-  </footer> 
-  <!-- Scroll Up -->
-  <div id="back-top" >
-    <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
-</div>
+      </footer> 
+      <!-- Scroll Up -->1
+      <div id="back-top" >
+        <a title="Go to Top" href="#"> <i class="fas fa-level-up-alt"></i></a>
+    </div>
 
-<!-- JS here -->
-<script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
-<!-- Jquery, Popper, Bootstrap -->
-<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<!-- Jquery Mobile Menu -->
-<script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
+    <!-- JS here -->
+    <script src="{% static 'js/vendor/modernizr-3.5.0.min.js' %}"></script>
+    <!-- Jquery, Popper, Bootstrap -->
+    <script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- Jquery Mobile Menu -->
+    <script src="{% static 'js/jquery.slicknav.min.js' %}"></script>
 
-<!-- Jquery Slick , Owl-Carousel Plugins -->
-<script src="{% static 'js/owl.carousel.min.js' %}"></script>
-<script src="{% static 'js/slick.min.js' %}"></script>
-<!-- One Page, Animated-HeadLin -->
-<script src="{% static 'js/wow.min.js' %}"></script>
-<script src="{% static 'js/animated.headline.js' %}"></script>
-<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+    <!-- Jquery Slick , Owl-Carousel Plugins -->
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/slick.min.js' %}"></script>
+    <!-- One Page, Animated-HeadLin -->
+    <script src="{% static 'js/wow.min.js' %}"></script>
+    <script src="{% static 'js/animated.headline.js' %}"></script>
+    <script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
 
-<!-- Date Picker -->
-<script src="{% static 'js/gijgo.min.js' %}"></script>
-<!-- Nice-select, sticky -->
-<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
-<script src="{% static 'js/jquery.sticky.js' %}"></script>
-<!-- Progress -->
-<script src="{% static 'js/jquery.barfiller.js' %}"></script>
+    <!-- Date Picker -->
+    <script src="{% static 'js/gijgo.min.js' %}"></script>
+    <!-- Nice-select, sticky -->
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <!-- Progress -->
+    <script src="{% static 'js/jquery.barfiller.js' %}"></script>
+    
+    <!-- counter , waypoint,Hover Direction -->
+    <script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/hover-direction-snake.min.js' %}"></script>
 
-<!-- counter , waypoint,Hover Direction -->
-<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
-<script src="{% static 'js/waypoints.min.js' %}"></script>
-<script src="{% static 'js/jquery.countdown.min.js' %}"></script>
-<script src="{% static 'js/hover-direction-snake.min.js' %}"></script>
-
-<!-- contact js -->
-<script src="{% static 'js/contact.js' %}"></script>
-<script src="{% static 'js/jquery.form.js' %}"></script>
-<script src="{% static 'js/jquery.validate.min.js' %}"></script>
-<script src="{% static 'js/mail-script.js' %}"></script>
-<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
-
-<!-- Jquery Plugins, main Jquery -->	
-<script src="{% static 'js/plugins.js' %}"></script>
-<script src="{% static 'js/main.js' %}"></script>
-
+    <!-- contact js -->
+    <script src="{% static 'js/contact.js' %}"></script>
+    <script src="{% static 'js/jquery.form.js' %}"></script>
+    <script src="{% static 'js/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'js/mail-script.js' %}"></script>
+    <script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+    
+    <!-- Jquery Plugins, main Jquery -->	
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    
 </body>
 </html>

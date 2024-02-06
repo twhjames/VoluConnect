@@ -1,10 +1,10 @@
-{$ load static %}
+{% load static %}
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Big At Heart</title>
+    <title> App landing</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
@@ -50,7 +50,7 @@
         <div class="login-form">
             <!-- logo-login -->
             <div class="logo-login">
-                <a href="index.html"><img src="{% static 'img/logo/loder.png' %}" alt=""></a>
+                <a href="{% url 'index' %}"><img src="assets/img/logo/loder.png" alt=""></a>
             </div>
             <h2>Registration Here</h2>
 
@@ -74,7 +74,7 @@
                 <input type="submit" name="submit" value="Registration">
             </div>
             <!-- Forget Password -->
-            <a href="login.html" class="registration">login</a>
+            <a href="{% url 'login' %}" class="registration">login</a>
         </div>
     </form>
     <!-- /end login form -->

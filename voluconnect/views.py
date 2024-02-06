@@ -31,6 +31,24 @@ def contact(request):
 def courses(request):
     return render(request, "courses.html", {})
 
+def cards(request):
+    return render(request, "cards.html", {})
+
+def children(request):
+    return render(request, "children.html", {})
+
+def gardening(request):
+    return render(request, "gardening.html", {})
+
+def labour(request):
+    return render(request, "labour.html", {})
+
+def painting(request):
+    return render(request, "painting.html", {})
+
+def rations(request):
+    return render(request, "rations.html", {})
+
 def elements(request):
     return render(request, "elements.html", {})
 
