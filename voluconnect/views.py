@@ -166,3 +166,4 @@ def exportEventTablePDF(request):
 
     # Return the response.
     return response
+

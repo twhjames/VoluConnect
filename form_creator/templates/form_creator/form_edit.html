@@ -1,0 +1,254 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block head %}
+<title>Edit Form</title>
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+  @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;800&family=Poppins:wght@300;400;500;600;700&display=swap");
+  a, a:hover {
+      text-decoration: none !important;
+  }
+  
+  .sidenav {
+      height: 100%;
+      width: 15vw;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #4f2e81;
+      overflow-x: hidden;
+      padding-top: 20px;
+  }
+  
+  .sidenav h3 {
+      font-size: 1.35em;
+      color: #c8cace;
+      font-family: "Poppins", "sans-sarif";
+      text-align: center;
+      padding-top: 1em;
+      width: 90%;
+      margin: 1.25em auto;
+      border-bottom: 2px solid #c8cace;
+  }
+  
+  .sidenav a {
+      padding: 16px 0;
+      text-align: center;
+      text-decoration: none;
+      font-size: 1.35em;
+      font-family: "Poppins", "sans-sarif";
+      color: #d1d5da;
+      display: block;
+  }
+  
+  .sidenav a:hover, .sidenav a:focus{
+      background-color: #5d38a7;
+      text-decoration: none;
+      width: 90%;
+      margin: auto;
+      border-radius: 5px;
+  }
+  
+  .sidenav a:active, .activeNav{
+      background-color: #6f40c5;
+      color: whitesmoke;
+      width: 90%;
+      margin: auto;
+      border-radius: 5px;
+  }
+  
+  .container{
+      margin-right: 0 !important;
+      margin-left: 280px !important;
+  }
+  
+  .container h1 {
+      margin-top: 10vh;
+  }
+  .eventForm {
+      width: 35vw;
+  }
+  
+  #eventsTable {
+      margin: 0 auto;
+  }
+  
+  #eventsTable .editIcon {
+      text-decoration: none;
+      color: #6f40c5;
+      margin: 0;
+      padding: 0;
+      display: inline;
+  }
+  
+  #eventsTable .editIcon button {
+      padding: 0;
+  }
+  
+  #eventsTable a.editIcon:hover {
+      color: #5d38a7;
+      text-decoration: none;
+  }
+  
+  .modal-title {
+      font-size: 1.5em;
+  }
+  
+  .modal-header {
+      display: flex;
+  }
+  
+  .modal-header .close {
+      margin-left: auto;
+  }
+  
+  .modal-body input {
+      display: block;
+      padding: 5px;
+      margin: 1em 0;
+  }
+  
+  
+  #eventForm button {
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      background-color: #6f40c5;
+      color: white;
+  }
+  
+  #eventForm button:hover {
+      background-color: #5d38a7;
+  }
+  
+  #pagination #counter{
+      float: left;
+  }
+  
+  #pagination .step-links{
+      float: right;
+  }
+  
+  #pagination {
+      padding-top: 2em;
+  }
+  
+  .events-toolkit {
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2em;
+      width: 100%;
+      position: relative;
+  }
+  
+  form.events-filter {
+      display: inline-flex;
+      width: 35vw;
+  }
+  form.events-filter input[type=text] {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #111d5e;
+      border-radius:10px 0 0 10px ;
+      border-right: none;
+      outline: none;
+      font-size: 1.25em;
+      color: #6f40c5;
+      background: #f1f1f1;
+    }
+    
+  form.events-filter button {
+      float: left;
+      text-align: center;
+      outline: none;
+      cursor: pointer;
+      border: 2px solid #111d5e;
+      border-radius: 0 10px 10px 0 ;
+      background: none;
+      font-size: 1.25em;
+      border-left: 2px solid #111d5e;
+      transition: background-color 0.3s ease;
+      padding: 10px 15px;
+  }
+  
+  form.events-filter button:hover {
+      background: #6f40c5;
+      color: whitesmoke !important;
+  }
+  
+  .events-btn {
+      margin-top: 10px;
+      float: right;
+  }
+  
+  #export-button, #add-event-button {
+      padding: 10px 15px;
+      margin-left: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: #6f40c5;
+      color: white;
+  }
+  
+  a #export-button:hover, a #add-event-button:hover {
+      background-color: #5d38a7;
+  }
+  </style>
+  
+  <div class="sidenav">
+    <h3>VoluConnect</h3>
+    <a {% block nav_dashboard %}{% endblock %} href="{% url 'dashboard' %}">
+        <i class="fa fa-home"></i>
+        <span class="sidenav-text">Dashboard</span>
+    </a>
+    <a {% block nav_attendance %}{% endblock %} href="{% url 'attendance' %}">
+        <i class="fa fa-users-viewfinder"></i>
+        <span class="sidenav-text">Attendance</span>
+    </a>
+    <a {% block nav_events %}{% endblock %} href="{% url 'events' %}">
+        <i class="fa fa-calendar"></i>
+        <span class="sidenav-text">Events</span>
+    </a>
+    <a {% block nav_forms %}{% endblock %} href="{% url 'form_creator:form_list' %}">
+        <i class="fa-brands fa-wpforms"></i>
+        <span class="sidenav-text">Forms</span>
+    </a>
+    <a {% block nav_profile %}{% endblock %} href="{% url 'profile' %}">
+        <i class="fa fa-user"></i>
+        <span class="sidenav-text">Profile</span>
+    </a>
+  </div>
+  
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'form_creator:form_list' %}">Forms</a>
+    </li>
+    <li class="breadcrumb-item">
+      <a href="{{ object.get_absolute_url }}">{{ object|truncatechars:20 }}</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Edit</li>
+  </ol>
+</nav>
+
+<h1>Edit Form</h1>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form|crispy }}
+  <input type="submit" class="btn btn-primary" value="Submit">
+  <a href="{{ object.get_absolute_url }}" class="btn btn-danger">Cancel</a>
+</form>
+
+{% endblock %}

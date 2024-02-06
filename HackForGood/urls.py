@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from voluconnect import views
 
 urlpatterns = [
@@ -38,11 +38,11 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('attendance/', views.attendance, name="attendance"),
     path('events/', views.events, name="events"),
-    path('forms/', views.forms, name="forms"),
     path('profile/', views.profile, name="profile"),
     path('add_event/', views.add_event, name="add_event"),
     path('export_events/', views.exportEventTablePDF, name="export_events"),
     path('delete_event/<int:pk>/', views.delete_event, name="delete_event"),
     path('get_event/<int:event_id>/', views.edit_event, name='get_event'),
     path('edit_event/', views.edit_event, name="edit_event"),
+    path('form-creator/', include('form_creator.urls'), name="forms"),
 ]
