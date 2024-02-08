@@ -1,7 +1,7 @@
 <html>
 <head>
     {% extends "base.html" %}
-    <title>{% block title %} VoluConnect Attendance Taking System {% endblock %}</title>
+    <title>{% block title %} VoluConnect Attendance Taking Management System {% endblock %}</title>
     <link rel="stylesheet" href="../static/css/custom-style.css">
 </head>
 
@@ -15,6 +15,74 @@
 
         <!-- Main content for the page -->
         {% block content %}
+        <h1>ATS Management</h1>
+        <div class="ats-toolkit">
+            <form class="ats-filter" action="">
+                <input type="text" placeholder="Search.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <hr/>
+        <table id="eventsTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Organisation</th>
+                    <th>Location</th>
+                    <th>Date & Time</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in page_obj %}
+                <tr>
+                    <td>{{ event.id }}</td>
+                    <td>{{ event.event_name }}</td>
+                    <td>{{ event.organisation }}</td>
+                    <td>{{ event.location }}</td>
+                    <td>{{ event.event_date }}</td>
+                    <td>
+                        <a href="{% url 'take_event_attendance' event_id=event.id %}" class="takeAttendanceBtn">
+                            Take Attendance
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="pagination">
+            <p id="counter">Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">
+                        <i class="fa fa-angles-left"></i>
+                    </a>
+                {% else %}
+                    <i class="fa fa-angles-left"></i>
+                {% endif %}
+                
+                <span class="current">
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <a href="?page={{ num }}" class="btn active">{{ num }}</a>
+                        {% else %}
+                            <a href="?page={{ num }}" class="btn">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">
+                        <i class="fa fa-angles-right"></i>
+                    </a>
+                {% else %}
+                    <i class="fa fa-angles-right"></i>
+                {% endif %}
+            </span>
+        </div>
         {% endblock %}
     </div>
 </body>

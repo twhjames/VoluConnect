@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from voluconnect import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -38,11 +40,18 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name="dashboard"),
     path('attendance/', views.attendance, name="attendance"),
     path('events/', views.events, name="events"),
+    path('forms/', views.forms, name="forms"),
     path('profile/', views.profile, name="profile"),
-    path('add_event/', views.add_event, name="add_event"),
+    path('add_event', views.add_event, name="add_event"),
     path('export_events/', views.exportEventTablePDF, name="export_events"),
-    path('delete_event/<int:pk>/', views.delete_event, name="delete_event"),
+    path('delete_event/<int:event_id>/', views.delete_event, name="delete_event"),
     path('get_event/<int:event_id>/', views.edit_event, name='get_event'),
     path('edit_event/', views.edit_event, name="edit_event"),
+    path('take_event_attendance/<int:event_id>/', views.take_event_attendance, name='take_event_attendance'),
+    path('qrGenerator/', views.qrGenerator, name="qrGenerator"),
+    path('atsManagement/<int:event_id>/', views.atsManagement, name="atsManagement"),
+    path('takeAttendance/<int:event_id>/<int:user_id>/', views.takeAttendance, name="takeAttendance"),
+    path('attendance_login/', views.attendance_login, name="attendance_login"),
+    path('attendance_result/', views.attendance_result, name="attendance_result"),
     path('form-creator/', include('form_creator.urls'), name="forms"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,6 +1,5 @@
 from django.db import models
-
-
+    
 class VolunteerUser(models.Model):
     user_name = models.CharField(max_length=200)
     user_email = models.CharField(max_length=200)
@@ -18,14 +17,24 @@ class Event(models.Model):
         return self.event_name
     
 class Attendance(models.Model):
-    event_name = models.ForeignKey(Event, blank=True, null=True, on_delete=models.CASCADE)
-    attendee = models.ForeignKey(VolunteerUser, blank=True, null=True, on_delete=models.CASCADE)
-    ATS_STATUS = [('PRESENT', 'Present'), ('ABSENT', 'Absent')]
+    event = models.ForeignKey(Event, blank=True, null=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(VolunteerUser, blank=True, null=True, on_delete=models.CASCADE)
+    attendance_options = [('PRESENT', 'Present'), ('ABSENT', 'Absent')]
     ats_status = models.CharField(
         max_length = 7,
-        choices = ATS_STATUS,
+        choices = attendance_options,
         default = 'ABSENT',
     )
     
     def __str__(self):
-        return str(self.event_name) + ' ' + str(self.attendee) + ' Attendance'
+        return str(self.event.event_name) + ' ' + str(self.user.user_name) + ' Attendance'
+    
+    class Meta:
+        unique_together = ('event', 'user')  # Ensures each user has only one attendance record per event
+
+class EventQrcode(models.Model):
+    event = models.ForeignKey(Event, blank=True, null=True, on_delete=models.CASCADE)
+    qr_image_url = models.ImageField(null=True, blank=True, upload_to='')
+
+    def __str__(self):
+        return str(self.event) + '-QRcode'

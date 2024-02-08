@@ -1,0 +1,146 @@
+<html>
+<head>
+    {% extends "base.html" %}
+    <title>{% block title %} VoluConnect Take Event Attendance {% endblock %}</title>
+    <link rel="stylesheet" href="../../css/custom-style.css">
+    {% block extra_css %}
+    <link rel="stylesheet" href="../../static/css/custom-style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% endblock %}
+
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- For active nav styling -->
+        {% block nav_attendance %}
+        class="activeNav"
+        {% endblock %}
+
+        <!-- Main content for the page -->
+        {% block content %}
+        <div class="ats-toolkit">
+            <div class="left-ats-toolkit">
+                <h1>ATS Management - {{ event_name }}</h1>
+                <form class="ats-filter" action="">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+            <div class="qr-image-container">
+                {% if qr_image_url %}
+                    <img src="{{ qr_image_url }}" alt="ATS QR Code">
+                    <div class="qr-buttons">
+                        <button class="regenerate-btn" onclick="generateQR(this)" data-event-id="{{ event_id }}">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <a href="{{ qr_image_url }}" download="{{ event_id }}_qrcode.png" class="download-btn">
+                            <i class="fa-solid fa-circle-down"></i>
+                        </a>
+                    </div>
+                {% else %}
+                    <img src="../../static/media/no_qr_image.png" alt="Default Image">
+                    <div class="qr-buttons">
+                        <button class="regenerate-btn" onclick="generateQR(this)" data-event-id="{{ event_id }}">
+                            <i class="fa-solid fa-arrows-rotate"></i>
+                        </button>
+                        <a class="download-btn">
+                            <i class="fa-solid fa-circle-down"></i>
+                        </a>
+                    </div>
+                {% endif %}
+
+
+            </div>
+        </div>
+        <hr/>
+        <table id="eventsTable" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>ATS Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in volunteer_list %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ entry.user.user_name }}</td>
+                    <td>{{ entry.user.user_email }}</td>
+                    <td>
+                        {% if entry.ats_status == "PRESENT" %}
+                            <span class="radiant-circle green"></span>
+                            <span>Present</span>
+                        {% else %}
+                            <span class="radiant-circle red"></span>
+                            <span>Absent</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div id="pagination">
+            <p id="counter">Showing {{ page_obj.start_index }} to {{ page_obj.end_index }} of {{ page_obj.paginator.count }} entries</p>
+
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">
+                        <i class="fa fa-angles-left"></i>
+                    </a>
+                {% else %}
+                    <i class="fa fa-angles-left"></i>
+                {% endif %}
+                
+                <span class="current">
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                            <a href="?page={{ num }}" class="btn active">{{ num }}</a>
+                        {% else %}
+                            <a href="?page={{ num }}" class="btn">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </span>
+                
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">
+                        <i class="fa fa-angles-right"></i>
+                    </a>
+                {% else %}
+                    <i class="fa fa-angles-right"></i>
+                {% endif %}
+            </span>
+        </div>
+
+        <script>
+            function generateQR(buttonElement) {
+                var eventId = buttonElement.getAttribute('data-event-id');
+                // AJAX call to generateQR
+                $.ajax({
+                    url: '/qrGenerator/',
+                    type: 'GET',
+                    data: {
+                        'event_id': eventId
+                    }, 
+                    success: function(response) {
+                        // Handle the response from Django
+                        console.log(response);
+                        // Reload the page or update the page based on the response
+                        //window.location.reload(); // Uncomment this to reload the page
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+        </script>
+        {% endblock %}  
+
+    </div>
+</body>
+</html>
