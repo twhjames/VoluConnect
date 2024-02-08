@@ -35,7 +35,7 @@ def courses(request):
     return render(request, "courses.html", {'events': events})
 
 def course_details(request, event_id):
-    event = get_object_or_404(Event, event_id=event_id)
+    event = get_object_or_404(Event, id=event_id)
     return render(request, "course_details.html", {'event': event})
 
 def elements(request):
