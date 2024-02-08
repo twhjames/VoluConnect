@@ -123,174 +123,41 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured1.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">18000 handmade gratitude cards to frontliners</a></h3>
-                                    <p>
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
+                    {% for event in events %}
+                        <div class="col-lg-4">
+                            <div class="properties properties2 mb-30">
+                                <div class="properties__card">
+                                    <div class="properties__img overlay1">
+                                        <a href="#"><img src="{{ event.event_image.url }}" alt=""></a>
                                     </div>
-                                    <a href="{% url 'cards' %}" class="border-btn border-btn2">Find out more</a>
+                                    <div class="properties__caption">
+                                        <h3><a href="#">{{ event.event_name }}</a></h3>
+                                        <p>
+                                            {{ event.organisation }} - {{ event.location }} - {{ event.event_date }}
+                                        </p>
+
+                                        <div class="properties__footer d-flex justify-content-between align-items-center">
+                                            <div class="restaurant-name">
+                                                <div class="rating">
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i>
+                                                    <i class="fas fa-star-half"></i>
+                                                </div>
+                                                <p><span>(4.5)</span> based on 120</p>
+                                            </div>
+                                        </div>
+                                        <a href="{% url 'course_details' event.event_id %}" class="border-btn border-btn2">Find out more</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured2.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Gardening project for a senior activity centre</a></h3>
-                                    <p>
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'gardening' %}" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured3.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Children's Day Fiesta for low income families</a></h3>
-                                    <p>    
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'children' %}" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured4.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Labour day charity walks</a></h3>
-                                    <p>
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'labour' %}" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured5.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Wall Mural Painting</a></h3>
-                                    <p>
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'painting' %}" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="properties properties2 mb-30">
-                            <div class="properties__card">
-                                <div class="properties__img overlay1">
-                                    <a href="#"><img src="{% static 'img/gallery/featured6.jpg' %}" alt=""></a>
-                                </div>
-                                <div class="properties__caption">
-                                    <h3><a href="#">Ration distribution</a></h3>
-                                    <p>
-                                    </p>
-                                    <div class="properties__footer d-flex justify-content-between align-items-center">
-                                        <div class="restaurant-name">
-                                            <div class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star-half"></i>
-                                            </div>
-                                            <p><span>(4.5)</span> based on 120</p>
-                                        </div>
-                                    </div>
-                                    <a href="{% url 'rations' %}" class="border-btn border-btn2">Find out more</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
+
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mt-40">

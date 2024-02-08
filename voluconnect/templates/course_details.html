@@ -97,7 +97,7 @@
                         <div class="row">
                             <div class="col-xl-8 col-lg-11 col-md-12">
                                 <div class="hero__caption hero__caption2">
-                                    <h1 data-animation="bounceIn" data-delay="0.2s">Gardening project</h1>
+                                    <h1 data-animation="bounceIn" data-delay="0.2s">{{ event.event_name }}</h1>
                                     <!-- breadcrumb Start-->
                                     <nav aria-label="breadcrumb">
                                         <ol class="breadcrumb">
@@ -120,18 +120,18 @@
                     <h3 class="mb-30"></h3>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{% static 'img/gallery/featured2.jpg' %}" alt="" class="img-fluid">
+                            <img src="{{ event.event_image.url }}" alt="" class="img-fluid">
                         </div>
                         <div class="col-md-9 mt-sm-20">
                             <p><b>Description:</b></p>
-                            <p>Join us in our gardening project for seniors! We're seeking volunteers to help cultivate a vibrant garden space where seniors can connect with nature and each other. Whether you're a seasoned gardener or just starting out, your enthusiasm is all we need. Sign up now and help us grow joy!</p>
+                            <p> {{ event.description }}</p>
                             <p>
-                                <b>job scope:</b>
-                                simple gardening and flexible assistance
+                                <b>Job Scope:</b>
+                                {{ event.job_scope }}
                             </p>
                             <p>
                                 <b>Hours:</b>
-                                4
+                                {{ event.duration }}
                             </p>
                             <section class="button-area">
                                 <div class="container box_1170 border-top-generic">

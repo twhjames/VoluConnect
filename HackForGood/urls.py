@@ -17,8 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from voluconnect import views
+<<<<<<< Updated upstream
 from django.conf import settings
 from django.conf.urls.static import static
+=======
+from django.conf.urls.static import static
+from django.conf import settings
+>>>>>>> Stashed changes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,15 +33,10 @@ urlpatterns = [
     path('blog/', views.blog, name="blog"),
     path('contact/', views.contact, name="contact"),
     path('courses/', views.courses, name="courses"),
+    path('course_details/<int:event_id>/', views.course_details, name='course_details'),
     path('elements/', views.elements, name="elements"),
     path('login/', views.login, name="login"),
     path('register/', views.elements, name="register"),
-    path('cards/', views.cards, name ="cards"),
-    path('children/', views.children, name ="children"),
-    path('gardening/', views.gardening, name ="gardening"),
-    path('labour/', views.labour, name ="labour"),
-    path('painting/', views.painting, name ="painting"),
-    path('rations/', views.rations, name ="rations"),
     path('dashboard/', views.dashboard, name="dashboard"),
     path('attendance/', views.attendance, name="attendance"),
     path('events/', views.events, name="events"),
@@ -54,4 +54,10 @@ urlpatterns = [
     path('attendance_login/', views.attendance_login, name="attendance_login"),
     path('attendance_result/', views.attendance_result, name="attendance_result"),
     path('form-creator/', include('form_creator.urls'), name="forms"),
+<<<<<<< Updated upstream
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+=======
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+>>>>>>> Stashed changes

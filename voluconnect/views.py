@@ -31,25 +31,12 @@ def contact(request):
     return render(request, "contact.html", {})
 
 def courses(request):
-    return render(request, "courses.html", {})
+    events = Event.objects.all()
+    return render(request, "courses.html", {'events': events})
 
-def cards(request):
-    return render(request, "cards.html", {})
-
-def children(request):
-    return render(request, "children.html", {})
-
-def gardening(request):
-    return render(request, "gardening.html", {})
-
-def labour(request):
-    return render(request, "labour.html", {})
-
-def painting(request):
-    return render(request, "painting.html", {})
-
-def rations(request):
-    return render(request, "rations.html", {})
+def course_details(request, event_id):
+    event = get_object_or_404(Event, event_id=event_id)
+    return render(request, "course_details.html", {'event': event})
 
 def elements(request):
     return render(request, "elements.html", {})

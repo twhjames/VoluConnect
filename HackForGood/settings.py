@@ -129,8 +129,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+<<<<<<< Updated upstream
 MEDIA_URL="media/"
 MEDIA_ROOT= os.path.join(BASE_DIR, "voluconnect/static/media/")
+=======
+MEDIA_ROOT = BASE_DIR/'media'
+MEDIA_URL = '/media/'
+
+>>>>>>> Stashed changes
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -146,3 +152,5 @@ MESSAGE_TAGS = {
 }
 
 mimetypes.add_type("text/css", ".css", True)
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
