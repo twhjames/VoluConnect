@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{% static 'css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     
 </head>
 
@@ -63,16 +64,8 @@
                                                 <li class="active" ><a href="{% url 'index' %}">Home</a></li>
                                                 <li><a href="{% url 'courses' %}">Projects</a></li>
                                                 <li><a href="{% url 'about' %}">About</a></li>
-                                                <li><a href="#{% url 'blog' %}">Blog</a>
-                                                    <ul class="submenu">
-                                                        <li><a href="{% url 'blog' %}">Blog</a></li>
-                                                        <li><a href="{% url 'blog_details' %}">Blog Details</a></li>
-                                                        <li><a href="{% url 'elements' %}">Element</a></li>
-                                                    </ul>
-                                                </li>
                                                 <li><a href="{% url 'contact' %}">Contact</a></li>
                                                 <!-- Button -->
-                                                <li class="button-header margin-left "><a href="{% url 'register' %}" class="btn">Join</a></li>
                                                 <li class="button-header"><a href="{% url 'login' %}" class="btn btn3">Log in</a></li>
                                             </ul>
                                         </nav>
@@ -132,7 +125,7 @@
                             </div>
                             <div class="features-caption">
                                 <h3>Volunteer</h3>
-                                <p>We do many on-ground volunteering activities in Singapore.</p>
+                                <p>We actively engage in volunteering activities.</p>
                             </div>
                         </div>
                     </div>
@@ -143,7 +136,7 @@
                             </div>
                             <div class="features-caption">
                                 <h3>Collaborate</h3>
-                                <p>If you are an organization in Singapore working directly with causes of children and youth in education sector, please write to us with your collaboration ideas.</p>
+                                <p>Collaborate with us on volunteering initiatives.</p>
                             </div>
                         </div>
                     </div>
@@ -156,7 +149,7 @@
                 <div class="row justify-content-center">
                     <div class="col-xl-7 col-lg-8">
                         <div class="section-tittle text-center mb-55">
-                            <h2>Blogs straight from the heart of our volunteers</h2>
+                            <h2>Explore our Latest Projects</h2>
                         </div>
                     </div>
                 </div>
@@ -168,11 +161,9 @@
                                 <a href="#"><img src="{% static 'img/gallery/featured1.png' %}" alt=""></a>
                             </div>
                             <div class="properties__caption">
-                                <h3>International Migrant's Day Celebration - My experience<a href="#"></a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
-                                </p>
-                                <a href="{% url 'blog' %}" class="border-btn border-btn2">Find out more</a>
+                                <h3>Green Earth Cleanup Initiative<a href="#"></a></h3>
+                                <p>Join us in making a positive impact on the environment! We'll be cleaning up local parks, streets, and public spaces to promote a cleaner, greener community. Bring your friends and family for a day of environmental stewardship. Together, we can create a healthier planet for future generations.</p>
+                                <a href="{% url 'courses' %}" class="border-btn border-btn2">Find out more</a>
                             </div>
 
                         </div>
@@ -185,10 +176,9 @@
                                 <a href="#"><img src="{% static 'img/gallery/featured2.png' %}" alt=""></a>
                             </div>
                             <div class="properties__caption">
-                                <h3><a href="#">Fashion for a purpose</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-                                </p>
-                                <a href="{% url 'blog' %}" class="border-btn border-btn2">Find out more</a>
+                                <h3><a href="#">Food Drive for the Homeless</a></h3>
+                                <p>Help us combat hunger in our community by participating in our food drive for the homeless. We're collecting non-perishable food items, canned goods, and hygiene products. Your contributions will directly support local shelters and individuals in need. Let's work together to make a difference in the lives of those facing food insecurity.</p>
+                                <a href="{% url 'courses' %}" class="border-btn border-btn2">Find out more</a>
                             </div>
                         </div>
                     </div>
@@ -200,13 +190,11 @@
                                 <a href="#"><img src="{% static 'img/gallery/featured3.png' %}" alt=""></a>
                             </div>
                             <div class="properties__caption">
-                                <h3><a href="#">Dressing dreams: Volunteering To Provide Affordable Clothings To Migrant Domestic Workers</a></h3>
-                                <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.
-
-                                </p>
+                                <h3><a href="#">Future Innovators Mentorship Program</a></h3>
+                                <p>=Inspire the next generation of innovators! Join our mentorship program aimed at guiding young minds in the fields of Science, Technology, Engineering, and Mathematics (STEM). As a mentor, you'll have the opportunity to share your knowledge, skills, and passion for STEM subjects. Together, we can empower youth to explore exciting career paths and build a foundation for their future success.</p>
                                 <div class="properties__footer d-flex justify-content-between align-items-center">
                                 </div>
-                                <a href="{% url 'blog' %}" class="border-btn border-btn2">Find out more</a>
+                                <a href="{% url 'courses' %}" class="border-btn border-btn2">Find out more</a>
                             </div>
 
                         </div>
@@ -215,54 +203,7 @@
             </div>
         </div>
         <!-- Courses area End -->
-        <!--? top subjects Area Start -->
-        <div class="topic-area section-padding40">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-7 col-lg-8">
-                        <div class="section-tittle text-center mb-55">
-                            <h2>Explore top projects</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{% static '/img/gallery/topic1.png' %}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{% static '/img/gallery/topic2.png' %}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-topic text-center mb-30">
-                            <div class="topic-img">
-                                <img src="{% static '/img/gallery/topic3.png' %}" alt="">
-                                <div class="topic-content-box">
-                                    <div class="topic-content">
-                                        <h3><a href="#">Programing</a></h3>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row justify-content-center">
                     <div class="col-xl-12">
                         <div class="section-tittle text-center mt-20">
@@ -273,25 +214,99 @@
             </div>
         </div>
         <!-- top subjects End -->
-        <!--? About Area-2 Start -->
-        <section class="about-area2 fix pb-padding">
-            <div class="support-wrapper align-items-center">
-                <div class="left-content2">
-                    <!-- section tittle -->
-                    <div class="section-tittle section-tittle2 mb-20">
-                        <div class="front-text">
-                            <h2 class="">Take the next step
-                                toward your personal
-                                and professional goals
-                            with us.</h2>
-                            <p>The automated process all your website tasks. Discover tools and techniques to engage effectively with vulnerable children and young people.</p>
-                            <a href="{% url 'register' %}" class="btn">Join now for Free</a>
+        
+                <section class="section services-section" id="services">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="section-title">
+                                    <h2>What We Do</h2>
+                                    <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-desktop"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Sustainability Focus</h5>
+                                        <p>Committed to creating a sustainable impact on both communities and the environment. Our volunteering efforts are aligned with long-term goals for a better, more resilient future.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Personal Growth</h5>
+                                        <p>A journey of self-discovery and growth awaits every volunteer. Join us to develop new skills, gain valuable experiences, and broaden your horizons while making a positive impact.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-comment"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Collaborative Spirit</h5>
+                                        <p>Harnessing the power of teamwork to address challenges and amplify our impact. Through collaboration, we achieve more and create lasting connections.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-image"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Community Impact</h5>
+                                        <p>Making a real difference where it's needed most. Together, we create positive change that echoes through our communities.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-th"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Empowerment Through Service</h5>
+                                        <p>Empowering individuals to make a lasting impact by contributing their time and skills. Every act of service strengthens our collective ability to inspire change.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
+                            <!-- feaure box -->
+                            <div class="col-sm-6 col-lg-4">
+                                <div class="feature-box-1">
+                                    <div class="icon">
+                                        <i class="fa fa-cog"></i>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h5>Inclusivity and Diversity</h5>
+                                        <p>Fostering an environment where everyone's unique strengths and perspectives are valued. Our volunteer community is a tapestry of diversity, united by a shared commitment to make a difference.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / -->
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- About Area End -->
+                </section>
     </main>
     <footer>
      <div class="footer-wrappper footer-bg">

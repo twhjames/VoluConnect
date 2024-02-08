@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from .forms import EventForm
 from .models import Event, Attendance, VolunteerUser, EventQrcode
@@ -6,8 +5,10 @@ from django.core.paginator import Paginator
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Table, TableStyle
 from reportlab.lib import colors
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
@@ -20,12 +21,6 @@ def index(request):
 
 def about(request):
     return render(request, "about.html", {})
-
-def blog_details(request):
-    return render(request, "blog_details.html", {})
-
-def blog(request):
-    return render(request, "blog.html", {})
 
 def contact(request):
     return render(request, "contact.html", {})
@@ -46,7 +41,24 @@ def elements(request):
     return render(request, "elements.html", {})
 
 def login(request):
-    return render(request, "login.html", {})
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+
+        try:
+            user = VolunteerUser.objects.get(email=email, password=password)
+        except VolunteerUser.DoesNotExist:
+            user = None
+
+        if user is not None:
+            # Perform any additional logic if needed before rendering the dashboard
+            messages.success(request, 'Login successful!')
+            return render(request, 'dashboard.html', {'user': user})
+        else:
+            error_message = "Invalid email or password. Please try again."
+            return render(request, 'login.html', {'error_message': error_message})
+
+    return render(request, 'login.html')
 
 def register(request):
     return render(request, "register.html", {})
