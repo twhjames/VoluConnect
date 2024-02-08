@@ -120,7 +120,7 @@
                     <h3 class="mb-30"></h3>
                     <div class="row">
                         <div class="col-md-3">
-                            <img src="{{ event.event_image.url }}" alt="" class="img-fluid">
+                            <img src="{{ event.event_image }}" alt="" class="img-fluid">
                         </div>
                         <div class="col-md-9 mt-sm-20">
                             <p><b>Description:</b></p>
@@ -133,6 +133,9 @@
                                 <b>Hours:</b>
                                 {{ event.duration }}
                             </p>
+
+                            <iframe src="{% url 'form_response' number=event.number title=event.event_name %}" width="400" height="400"></iframe>
+
                             <section class="button-area">
                                 <div class="container box_1170 border-top-generic">
                                     <div class="button-group-area mt-10">

@@ -21,6 +21,9 @@ url_prefix = "form_creator:"
 class Form(models.Model):
     """The configuration for a form."""
 
+    def __str__(self):
+        return f"{self.id} - {self.title}"
+
     class StatusChoices(models.TextChoices):
         """The status of a form."""
 
@@ -58,8 +61,7 @@ class Form(models.Model):
         db_table = "fc_form"
         ordering = ["status", "-created_dt"]
 
-    def __str__(self):
-        return self.title
+
 
     def save(self, *args, **kwargs):
         """Override the save method to set the slug."""
