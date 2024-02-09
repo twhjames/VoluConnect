@@ -2,38 +2,110 @@
 <head>
     <title>{% block title %} VoluConnect Admin Dashboard {% endblock %}</title>
     <link rel="stylesheet" href="../static/css/custom-style.css">
+    <style>
+        .dashboard-container {
+            height: 100vh;
+            position: relative;
+        }
+        .dashboard-content {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        .dashboard-header {
+            width: 100vw;
+            text-align: center;
+        }
+        .dashboard-header h2 {
+            font-family: "Poppins", "sans-sarif";
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .dashboard-section {
+            display: flex;
+            /* height: 100vh; */
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .dashboard-card h3 {
+            font-family: "Poppins", "sans-sarif";
+            font-size: 1.5em;
+            text-align: center;
+        }
+        .dashboard-card {
+            width: 300px;
+            height: 300px;
+            padding: 5px;
+            margin: 10px;
+            position: relative;
+            border-radius: 7px;
+            perspective: 2000px;
+        }
+        
+        .dashboard-card:hover {
+            transform: rotateY(360deg);
+            box-shadow: 0 0 20px #5d38a7;
+        }
+
+        .dashboard-card-front {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 7px;
+            backface-visibility: hidden;
+            transition: 0.5s;
+        }
+
+        .dashboard-card-front {
+            background-color: #6f40c5;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container">
         {% block nav_dashboard %}
-        <div class="dashboard-section">
-            <a href="{% url 'attendance' %}">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-front">
-                      <h3>Attendance Taking System</h3>
-                    </div>
-                  </div>
-            </a>
-            
-            <a href="{% url 'events' %}">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-front">
-                        <h3>Events Management System</h3>
-                    </div>
+        <div class="dashboard-container"> 
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <hr style="width:65%"/>
+                    <h2>VoluConnect Dashboard</h2>
+                    <hr style="width:65%"/>
                 </div>
-            </a>
-            
-            <a href="{% url 'profile' %}">
-                <div class="dashboard-card">
-                    <div class="dashboard-card-front">
-                      <h3>Settings</h3>
-                    </div>
+                <div class="dashboard-section">
+                    <a href="{% url 'attendance' %}">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-front">
+                            <h3>Attendance Taking System</h3>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="{% url 'events' %}">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-front">
+                                <h3>Events Management System</h3>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="{% url 'profile' %}">
+                        <div class="dashboard-card">
+                            <div class="dashboard-card-front">
+                            <h3>Settings</h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-            
+            </div>   
         </div>
         {% endblock %}
-    </div>
 </body>
 </html>

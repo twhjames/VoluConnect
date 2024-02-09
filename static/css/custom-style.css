@@ -260,14 +260,36 @@ a #export-button:hover, a #add-event-button:hover {
     background-color: #5d38a7;
 }
 
+.dashboard-container {
+    height: 100vh;
+    position: relative;
+}
+.dashboard-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.dashboard-header {
+    width: 100vw;
+    text-align: center;
+}
+.dashboard-header h2 {
+    font-family: "Poppins", "sans-sarif";
+    font-size: 1.5em;
+    text-align: center;
+}
 .dashboard-section {
     display: flex;
-    height: 100vh;
+    /* height: 100vh; */
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
 }
-
+.dashboard-card h3 {
+    font-family: "Poppins", "sans-sarif";
+    font-size: 1.5em;
+    text-align: center;
+}
 .dashboard-card {
     width: 300px;
     height: 300px;
