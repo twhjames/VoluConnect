@@ -8,7 +8,7 @@
 2. Install Django, if haven’t  
    `sudo apt install python3-django`
 3. Pip Install the relevant packages for the web app as such  
-  
+  `pip install -r /path/to/requirements.txt`
 4. To run the program on localhost, enter the following command  
    `sudo python3 manage.py runserver `
 
