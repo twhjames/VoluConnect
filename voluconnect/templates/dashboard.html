@@ -1,6 +1,5 @@
 <html>
 <head>
-    {% extends "base.html" %}
     <title>{% block title %} VoluConnect Admin Dashboard {% endblock %}</title>
     <link rel="stylesheet" href="../static/css/custom-style.css">
 </head>
@@ -8,7 +7,32 @@
 <body>
     <div class="container">
         {% block nav_dashboard %}
-        class="activeNav"
+        <div class="dashboard-section">
+            <a href="{% url 'attendance' %}">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-front">
+                      <h3>Attendance Taking System</h3>
+                    </div>
+                  </div>
+            </a>
+            
+            <a href="{% url 'events' %}">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-front">
+                        <h3>Events Management System</h3>
+                    </div>
+                </div>
+            </a>
+            
+            <a href="{% url 'profile' %}">
+                <div class="dashboard-card">
+                    <div class="dashboard-card-front">
+                      <h3>Settings</h3>
+                    </div>
+                </div>
+            </a>
+            
+        </div>
         {% endblock %}
     </div>
 </body>
