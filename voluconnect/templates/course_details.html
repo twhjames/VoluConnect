@@ -134,7 +134,7 @@
                             {% with event_slug=event.event_name|slugify %}
 
                                 <!-- Use the event_slug in the URL -->
-                                <iframe src="{% url 'form_response' number=event.number title=event_slug %}" width="400" height="400"></iframe>
+                                <iframe src="{% url 'form_response' number=event.number title=event_slug %}" width="700" height="600"></iframe>
 
                             {% endwith %}
                             {% endblock %}
