@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser, Group, Permission
     
 class VolunteerUser(models.Model):
+    user_name = models.CharField('User Name', max_length=200, blank=True, null=True)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=128)
 

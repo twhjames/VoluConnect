@@ -177,39 +177,42 @@ def exportEventTablePDF(request):
     return response
 
 def take_event_attendance(request, event_id):
-    # Get the event object
-    event = get_object_or_404(Event, pk=event_id)
-    eventName = event.event_name
+    try:
+        # Get the event object
+        event = get_object_or_404(Event, pk=event_id)
+        eventName = event.event_name
 
-    # Get all the registered volunteers for this particular event
-    volunteerList = Attendance.objects.filter(event = event)
-    qrcodeImage = EventQrcode.objects.get(event = event).qr_image_url
-    if not len(qrcodeImage.name) == 0:
-        print("not empty")
-        qrcodeImage = f"http://127.0.0.1:8000/static/media/EventID-{event_id}_qrcode.png"
-    else:
-        print("empty")
-        qrcodeImage = ""
-    volunteerList = volunteerList.select_related('user')
+        # Get all the registered volunteers for this particular event
+        volunteerList = Attendance.objects.filter(event = event)
+        qrcodeImage = EventQrcode.objects.get(event = event).qr_image_url
+        if not len(qrcodeImage.name) == 0:
+            print("not empty")
+            qrcodeImage = f"http://127.0.0.1:8000/static/media/EventID-{event_id}_qrcode.png"
+        else:
+            print("empty")
+            qrcodeImage = ""
+        volunteerList = volunteerList.select_related('user')
 
-    # Create paginator
-    paginator = Paginator(volunteerList, 10)
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+        # Create paginator
+        paginator = Paginator(volunteerList, 10)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
 
-    # If no volunteers, inform admin with a pop-up msg
-    if not volunteerList.exists():
-        return HttpResponseRedirect('/attendance?infoMsg=EmptyVolunteerList')
-    
-    # Direct admin to take attendance for that event
-    context = {
-        'event_id' : event_id,
-        'event_name' : eventName,
-        'volunteer_list' : volunteerList,
-        'page_obj': page_obj,
-        'qr_image_url' : qrcodeImage,
-    }
-    return render(request, 'take_event_attendance.html', context)
+        # If no volunteers, inform admin with a pop-up msg
+        if not volunteerList.exists():
+            return HttpResponseRedirect('/attendance?infoMsg=EmptyVolunteerList')
+        
+        # Direct admin to take attendance for that event
+        context = {
+            'event_id' : event_id,
+            'event_name' : eventName,
+            'volunteer_list' : volunteerList,
+            'page_obj': page_obj,
+            'qr_image_url' : qrcodeImage,
+        }
+        return render(request, 'take_event_attendance.html', context)
+    except EventQrcode.DoesNotExist:
+        return HttpResponseRedirect('/attendance?infoMsg=NoEventQrCode')
 
 def qrGenerator(request):
     if request.method == "GET":
@@ -248,8 +251,8 @@ def qrGenerator(request):
 def atsManagement(request, event_id):
     if request.method == "POST":
         try:
-            userEmail = request.POST["user_email"]
-            attendee = Attendance.objects.get(user_email=userEmail)
+            userEmail = request.POST["email"]
+            attendee = Attendance.objects.get(email=userEmail)
             takeAttendance(event_id, attendee.pk)
         except VolunteerUser.DoesNotExist:
             # User does not have a valid accounted
@@ -274,3 +277,52 @@ def attendance_login(request):
 
 def attendance_result(request):
     return render(request, "attendance_result.html", {})
+
+def exportAttendanceTablePDF(request, event_id):
+    # Craft out the relevant search query & retrieve from database
+    attendance = Attendance.objects.filter(event = event_id)
+    if not attendance:
+        return HttpResponseRedirect('/events?infoMsg=EmptyVolunteerList')
+    
+    # Create a HttpResponse object with the appropriate PDF headers.
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="attendance_list.pdf"'
+
+    # Create a PDF object, using the response object as its "file."
+    buffer = SimpleDocTemplate(response, pagesize=letter)
+
+    # Create a list to hold the PDF elements.
+    elements = []
+
+    # Define the table data and headers.
+    data = [['Event', 'Volunteer', 'Attendance']]  # Table headers
+    data += [[item.event, item.user, item.ats_status] for item in attendance]
+
+    # Create a Table with the data.
+    table = Table(data)
+
+    # Add some style to the Table
+    style = TableStyle([
+        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+        ('BOX', (0,0), (-1,-1), 1, colors.black),
+        ('GRID', (0,0), (-1,-1), 1, colors.black),
+    ])
+    table.setStyle(style)
+
+    # Ensure each row size can accommodate the data
+    row_heights = [30] * len(data)
+    table.rowHeights = row_heights
+
+    # Add the Table to the elements list.
+    elements.append(table)
+
+    # Build the PDF.
+    buffer.build(elements)
+
+    # Return the response.
+    return response

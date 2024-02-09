@@ -15,6 +15,26 @@
 
         <!-- Main content for the page -->
         {% block content %}
+        {% if infoMsg == 'NoEventQr' %}
+            <script type="text/javascript">
+                var showNoEventQrModal = true;
+            </script>
+        {% endif %}
+        <!-- Modal Alert -->
+        <div class="modal" id="noEventQrModalMsg">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        No event QR code available.
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <h1>ATS Management</h1>
         <div class="ats-toolkit">
             <form class="ats-filter" action="">
@@ -83,6 +103,18 @@
                 {% endif %}
             </span>
         </div>
+
+        <script type="text/javascript">
+            var showNoEventQrModal = false; 
+            document.addEventListener('DOMContentLoaded', function() {
+                if (showNoEventQrModal) {
+                    // Code to show your modal
+                    document.getElementById("noEventQrModalMsg").style.display = "block";
+                }
+
+            });
+        </script>
+
         {% endblock %}
     </div>
 </body>

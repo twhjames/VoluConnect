@@ -87,10 +87,13 @@
                                 </div>
                             </div>
 
-                            </a>
-                            <a href="" class="editIcon">
-                                <i class="fa fa-download"></i>
-                            </a>
+                            <form action="{% url 'export_attendance' event.pk %}" method="post" class="editIcon">
+                                {% csrf_token %}
+                                <button type="submit" value="Download" style="border: none; background: none; cursor: pointer;">
+                                    <i class="fa fa-download"></i>
+                                </button>
+                            </form>
+
                             
                             <form action="{% url 'delete_event' event.pk %}" method="post" class="editIcon">
                                 {% csrf_token %}

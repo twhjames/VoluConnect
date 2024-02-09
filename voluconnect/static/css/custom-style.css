@@ -42,6 +42,7 @@ a, a:hover {
     width: 90%;
     margin: auto;
     border-radius: 5px;
+    color: #d1d5da !important;
 }
 
 .sidenav a:active, .activeNav{
@@ -261,3 +262,66 @@ a #export-button:hover, a #add-event-button:hover {
 }
 
 
+#profile .wrapper {
+    padding: 30px 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    margin: 10px auto;
+    max-width: 600px;
+}
+#profile h4 {
+    letter-spacing: -1px;
+}
+#profile .img {
+    width: 70px;
+    height: 70px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+#profile #img-section p {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+#profile #img-section b, #profile #img-section button{
+    font-size: 14px; 
+}
+
+#profile label{
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: #777;
+    padding-left: 3px;
+}
+
+#profile .form-control{
+    border-radius: 10px;
+}
+
+#profile input[placeholder]{
+    font-weight: 500;
+}
+#profile .form-control:focus{
+    box-shadow: none;
+    border: 1.5px solid #0779e4;
+}
+
+#profile .button, #profile .btn-primary{
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #6f40c5;
+    color: white;
+}
+
+#profile .btn-primary {
+    margin-top: 1em;
+}
+
+#profile .button:hover, #profile .btn-primary:hover{
+    background-color: #5d38a7;
+    color: #fff;
+}

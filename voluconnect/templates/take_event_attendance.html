@@ -69,7 +69,7 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td>{{ entry.user.user_name }}</td>
-                    <td>{{ entry.user.user_email }}</td>
+                    <td>{{ entry.user.email }}</td>
                     <td>
                         {% if entry.ats_status == "PRESENT" %}
                             <span class="radiant-circle green"></span>
@@ -130,7 +130,7 @@
                         // Handle the response from Django
                         console.log(response);
                         // Reload the page or update the page based on the response
-                        //window.location.reload(); // Uncomment this to reload the page
+                        window.location.reload();
                     },
                     error: function(error) {
                         console.log(error);

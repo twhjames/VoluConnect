@@ -48,4 +48,5 @@ urlpatterns = [
     path('attendance_result/', views.attendance_result, name="attendance_result"),
     path('form-creator/', include('form_creator.urls'), name="forms"),
     path('form-creator/forms/<int:number>-<slug:title>/response/', views.form_response, name='form_response'),
+    path('export_attendance/<int:event_id>/', views.exportAttendanceTablePDF, name="export_attendance"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
