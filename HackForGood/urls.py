@@ -19,6 +19,7 @@ from django.urls import path, include
 from voluconnect import views
 from django.conf import settings
 from django.conf.urls.static import static
+from form_creator.views import FormResponseView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -47,6 +48,6 @@ urlpatterns = [
     path('attendance_login/', views.attendance_login, name="attendance_login"),
     path('attendance_result/', views.attendance_result, name="attendance_result"),
     path('form-creator/', include('form_creator.urls'), name="forms"),
-    path('form-creator/forms/<int:number>-<slug:title>/response/', views.form_response, name='form_response'),
+    path('form-creator/forms/<int:number>-<slug:title>/response/', FormResponseView.as_view(), name='form_response'),
     path('export_attendance/<int:event_id>/', views.exportAttendanceTablePDF, name="export_attendance"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

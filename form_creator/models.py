@@ -228,7 +228,7 @@ class FormResponder(models.Model):
         related_name="responders",
     )
     created_dt = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     class Meta:
         db_table = "fc_form_responder"

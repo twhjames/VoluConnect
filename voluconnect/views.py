@@ -33,10 +33,6 @@ def course_details(request, number):
     event = get_object_or_404(Event, number=number)
     return render(request, "course_details.html", {'event': event})
 
-def form_response(request, number, title):
-    event = get_object_or_404(Event, number=number)
-    return render(request, "form_response.html", {'event': event, 'title': title})
-
 def elements(request):
     return render(request, "elements.html", {})
 

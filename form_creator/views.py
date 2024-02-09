@@ -176,7 +176,6 @@ class FormResponseView(View):
     template_name = "form_creator/form_response.html"
     success_url = None
 
-    @method_decorator(login_required, name="dispatch")
     @method_decorator(with_form(), name="dispatch")
     @method_decorator(redirect_if_form_completed(), name="dispatch")
     def get(self, request: HttpRequest, form: fc_models.Form) -> HttpResponse:
@@ -186,15 +185,23 @@ class FormResponseView(View):
             {"object": form, "form": fc_forms.CaptureResponseForm(form)},
         )
 
-    @method_decorator(login_required, name="dispatch")
     @method_decorator(with_form(), name="dispatch")
     @method_decorator(redirect_if_form_completed(), name="dispatch")
     def post(self, request: HttpRequest, form: fc_models.Form) -> HttpResponse:
         response_form = fc_forms.CaptureResponseForm(form, request.POST)
         if response_form.is_valid():
-            response_form.save(request.user)
+            # Allow anyone to submit, including anonymous users
+            user = request.user if request.user.is_authenticated else None
+            response_form.save(user)
+            
             messages.success(request, "Response saved.")
-            return redirect(self.success_url or form.get_absolute_url())
+            
+            # Redirect back to the form_response.html page after submission
+            return render(
+                request,
+                self.template_name,
+                {"object": form, "form": fc_forms.CaptureResponseForm(form)},
+            )
         else:
             messages.error(request, "Please correct the errors below.")
             return render(
@@ -202,7 +209,6 @@ class FormResponseView(View):
                 self.template_name,
                 {"object": form, "form": response_form},
             )
-
 
 @with_form(can_edit=True)
 def download_questions(
