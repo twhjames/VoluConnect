@@ -10,17 +10,30 @@ class EventForm(ModelForm):
             'event_name',
             'organisation',
             'location',
-            'event_date'
+            'event_date',
+            'description',
+            'job_scope',
+            'duration',
+            'event_image'
         )
         labels = {
             'event_name': 'Event',
             'organisation': 'Organisation',
             'location': 'Location',
-            'event_date': 'Date & Time'
+            'event_date': 'Date & Time',
+            'description': 'Description',
+            'job_scope': 'Job Scope',
+            'duration': 'Duration',
+            'event_image': 'Event Image',
+
         }
         widgets = {
             'event_name': forms.TextInput(attrs={'class':'form-control'}),
             'organisation': forms.TextInput(attrs={'class':'form-control'}),
             'location': forms.TextInput(attrs={'class':'form-control'}),
             'event_date': forms.TextInput(attrs={'class':'form-control'}),
+            'description': forms.TextInput(attrs={'class':'form-control'}),
+            'job_scope': forms.TextInput(attrs={'class':'form-control'}),
+            'duration': forms.TextInput(attrs={'class':'form-control'}),
+            'event_image': forms.FileInput(attrs={'class': 'form-control'}),
         }
