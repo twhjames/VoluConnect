@@ -1,4 +1,6 @@
 {% load static %}
+{% load humanize %}
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 <head>
@@ -127,61 +129,23 @@
                                 {{ event.duration }}
                             </p>
 
-                            <iframe src="{% url 'form_response' number=event.number title=event.event_name %}" width="400" height="400"></iframe>
+                            {% block content %}
+                            <!-- Use the slugify filter to create a slug from event_name -->
+                            {% with event_slug=event.event_name|slugify %}
 
-                            <section class="button-area">
-                                <div class="container box_1170 border-top-generic">
-                                    <div class="button-group-area mt-10">
-                                        <a href="#" class="genric-btn primary-border">Register Here</a>
-                                    </div>
-                                </div>
-                            </section>
+                                <!-- Use the event_slug in the URL -->
+                                <iframe src="{% url 'form_response' number=event.number title=event_slug %}" width="400" height="400"></iframe>
+
+                            {% endwith %}
+                            {% endblock %}
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--? End Align Area -->
-        <!-- ? services-area -->
-        <div class="services-area services-area2 section-padding40">
-            <div class="container">
-                <div class="row justify-content-sm-center">
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="{% static 'img/icon/icon1.svg' %}" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>60+ UX courses</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="{% static 'img/icon/icon2.svg' %}" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Expert instructors</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-8">
-                        <div class="single-services mb-30">
-                            <div class="features-icon">
-                                <img src="{% static 'img/icon/icon3.svg' %}" alt="">
-                            </div>
-                            <div class="features-caption">
-                                <h3>Life time access</h3>
-                                <p>The automated process all your website tasks.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </main>
     <footer>
         <div class="footer-wrappper footer-bg">

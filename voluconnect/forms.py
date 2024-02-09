@@ -7,6 +7,7 @@ class EventForm(ModelForm):
     class Meta:
         model = Event
         fields = (
+            'number',
             'event_name',
             'organisation',
             'location',
@@ -17,6 +18,7 @@ class EventForm(ModelForm):
             'event_image'
         )
         labels = {
+            'number': 'Event Number',
             'event_name': 'Event',
             'organisation': 'Organisation',
             'location': 'Location',
@@ -28,6 +30,7 @@ class EventForm(ModelForm):
 
         }
         widgets = {
+            'number': forms.NumberInput(attrs={'class': 'form-control'}),
             'event_name': forms.TextInput(attrs={'class':'form-control'}),
             'organisation': forms.TextInput(attrs={'class':'form-control'}),
             'location': forms.TextInput(attrs={'class':'form-control'}),
