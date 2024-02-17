@@ -31,7 +31,7 @@
 6. Click "Go" to remove the event.
 
 ### Qr Code Attendance Taking System
-1. Login into the Django Admin Dashboard 127.0.0.1:8000/admin.
+1. Login into the VoluConnect Admin Dashboard 127.0.0.1:8000/admin.
 2. Click on the "Add" option on the Event qrcodes row.
 3. Fill in neccessary information.
 4. Download QRcode to be scanned by volunteers at the start and end of every project to track their attendance.
@@ -40,7 +40,7 @@
 7. Make the changes and click "Save".
 
 ### Export PDF
-1. Login into the Django Admin Dashboard 127.0.0.1:8000/admin.
+1. Login into the VoluConnect Admin Dashboard 127.0.0.1:8000/admin.
 2. Click on the "Attendances" button.
 3. Change the action to either "Export questions" or "Export responses".
 4. Select the form name and click "Go".
